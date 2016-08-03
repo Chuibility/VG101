@@ -4,7 +4,7 @@ This is a combinition of Vg101 labs. The aim is to record valuable lab resources
 
 ## About Honor Code
 
-The code itself is based on open-source licence decided by the owner of code. However, if there is the same lab, it is the responsity of JI students not to copy or modify these code because it is against the Honor Code.
+The code itself is based on open-source licence decided by the owner of code. However, if there is the same lab, it is the responsibility of JI students not to copy or modify these code because it is against the Honor Code.
 
 According to the student handbook (2015 version),
 > It is a violation of the Honor Code for students to submit, as their own, work that is not the result of their own
