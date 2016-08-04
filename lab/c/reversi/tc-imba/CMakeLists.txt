@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
-project(reversi)
+project(reversi-tc-imba)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_C_COMPILER gcc)
 
 set(SOURCE_FILES reversi.c)
-add_executable(reversi ${SOURCE_FILES})
+add_executable(reversi-tc-imba ${SOURCE_FILES})
