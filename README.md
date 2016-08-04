@@ -12,11 +12,20 @@ labor and thoughts. This applies, in particular, to ideas, expressions or work o
 as from books, the internet, and other sources. The failure to properly credit ideas, expressions or work from
 others is considered plagiarism.
 
-## Reversi
-A simple reversi game.
+## Lab - Matlab
 
-https://github.com/JasonQSY/Reversi
+- num2words
 
-## Cube
+## Lab - C
 
-https://github.com/JasonQSY/Cube
+- [Reversi](lab/c/reversi)
+- [Cube](lab/c/cube)
+- BLADE
+
+## Lab - Cpp
+
+- Due is coming
+
+## Contribution
+
+If you want to add your code, feel free to just open pull request.
