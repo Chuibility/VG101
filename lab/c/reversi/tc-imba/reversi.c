@@ -18,10 +18,6 @@ typedef enum{EMPTY, WHITE_, BLACK_, BOTH, WHITE, BLACK }STATE;
 #define COLOR_(a) (a-3)
 #define COLOR_rev(a) (9-a)
 #define COLOR_bin(a) (a-4)
-//#define COLOR_bin_rev(a) (5-a)
-
-//#define AI_COLOR_BLACK
-//#define AI_COLOR_WHITE
 
 //the AI color, white goes at first in the game
 int AI_COLOR = WHITE;
@@ -42,13 +38,6 @@ int MODE = MODE_EASY;
 //#define AI_MODE MODE_HARD
 
 char symbol[6] = { ' ',' ',' ',DISPLAY_CHESS,'O','X' };
-
-/*#ifdef AI_COLOR_BLACK
-char symbol[6] = { ' ',DISPLAY_CHESS,' ',DISPLAY_CHESS,'O','X' };
-#endif
-#ifdef AI_COLOR_WHITE
-char symbol[6] = { ' ',' ',DISPLAY_CHESS,DISPLAY_CHESS,'O','X' };
-#endif*/
 
 // the eight directions of the next chess
 int dir[8][2] = { -1, 0, 0,-1,-1, 1, 1, 1,
@@ -246,12 +235,6 @@ void init()
 long getarg(int x, int y, STATE s)
 {
     return (s == AI_COLOR ? arg[x][y] : -arg[x][y]);
-/*#ifdef AI_COLOR_BLACK
-	return (s == BLACK ? arg[x][y] : -arg[x][y]);
-#endif
-#ifdef AI_COLOR_WHITE
-	return (s == WHITE ? arg[x][y] : -arg[x][y]);
-#endif*/
 }
 
 int boyi_max_x, boyi_max_y;
@@ -270,22 +253,7 @@ long boyi_search(char n_w, char n_b, char board[][SIZE], char s, char f, long a,
         {
             return (n_w < n_b ? -1000000 : (n_w > n_b ? 1000000 : 0));
         }
-/*#ifdef AI_COLOR_BLACK
-		return (n_w > n_b ? -1000000 : (n_w < n_b ? 1000000 : 0));
-#endif
-#ifdef AI_COLOR_WHITE
-		return (n_w < n_b ? -1000000 : (n_w > n_b ? 1000000 : 0));
-#endif*/
     }
-/*#if (AI_MODE==MODE_EASY)
-	if (n >= chess_num[0] + chess_num[1] + 2 && chess_num[0] + chess_num[1] <= SIZE*SIZE - 3)
-#elif (AI_MODE==MODE_NORM)
-	if (n >= chess_num[0] + chess_num[1] + 5 && chess_num[0] + chess_num[1] <= SIZE*SIZE - 6)
-#elif (AI_MODE==MODE_HARD)
-	if (n >= chess_num[0] + chess_num[1] + 8 && chess_num[0] + chess_num[1] <= SIZE*SIZE - 12)
-#elif (AI_MODE==MODE_HELL)
-	if (n >= chess_num[0] + chess_num[1] + 10 && chess_num[0] + chess_num[1] <= SIZE*SIZE - 12)
-#endif*/
     if (n >= chess_num[0] + chess_num[1] + MODE_DEPTH[MODE] && chess_num[0] + chess_num[1] <= SIZE*SIZE - MODE_DEPTH_END[MODE])
     {
         return 0;
@@ -315,12 +283,6 @@ long boyi_search(char n_w, char n_b, char board[][SIZE], char s, char f, long a,
     else
     {
         num = num_now[COLOR_bin(AI_COLOR)];
-/*#ifdef AI_COLOR_BLACK
-		num = num_now[1];
-#endif
-#ifdef AI_COLOR_WHITE
-		num = num_now[0];
-#endif*/
     }
     long arg_m;
     char rs = (s == WHITE ? BLACK : WHITE);
@@ -338,12 +300,6 @@ long boyi_search(char n_w, char n_b, char board[][SIZE], char s, char f, long a,
             {
                 return (n_w < n_b ? -1000000 : (n_w > n_b ? 1000000 : 0));
             }
-/*#ifdef AI_COLOR_BLACK
-			return (n_w > n_b ? -1000000 : (n_w < n_b ? 1000000 : 0));
-#endif
-#ifdef AI_COLOR_WHITE
-			return (n_w < n_b ? -1000000 : (n_w > n_b ? 1000000 : 0));
-#endif*/
         }
         else
         {
@@ -358,12 +314,6 @@ long boyi_search(char n_w, char n_b, char board[][SIZE], char s, char f, long a,
             if (f==1)
             {
                 if (chessboard[i][j] != COLOR_(AI_COLOR) && chessboard[i][j] != BOTH)
-/*#ifdef AI_COLOR_BLACK
-				if (chessboard[i][j] != BLACK_&&chessboard[i][j] != BOTH)
-#endif
-#ifdef AI_COLOR_WHITE
-				if (chessboard[i][j] != WHITE_&&chessboard[i][j] != BOTH)
-#endif*/
                 {
                     continue;
                 }
@@ -381,12 +331,6 @@ long boyi_search(char n_w, char n_b, char board[][SIZE], char s, char f, long a,
             if (num != 0)
             {
                 if (s == AI_COLOR)
-/*#ifdef AI_COLOR_BLACK
-				if (s == BLACK)
-#endif
-#ifdef AI_COLOR_WHITE
-				if (s == WHITE)
-#endif*/
                 {
                     a = max(a, arg_now);
                 }
@@ -405,32 +349,14 @@ long boyi_search(char n_w, char n_b, char board[][SIZE], char s, char f, long a,
                 arg_now = boyi_search(n_w + rev + 1, n_b - rev, new_board, rs, 0, a - arg_d, b - arg_d) + arg_d;
             }
             if (s == COLOR_rev(AI_COLOR) && arg_now <= a)//alpha
-/*#ifdef AI_COLOR_BLACK
-			if (s == WHITE&&arg_now <= a)//alpha
-#endif
-#ifdef AI_COLOR_WHITE
-			if (s == BLACK&&arg_now <= a)//alpha
-#endif*/
             {
                 return a;
             }
             if (s == AI_COLOR && arg_now >= b)//beita
-/*#ifdef AI_COLOR_BLACK
-			if (s == BLACK&&arg_now >= b)//beita
-#endif
-#ifdef AI_COLOR_WHITE
-			if (s == WHITE&&arg_now >= b)//beita
-#endif*/
             {
                 return b;
             }
             if (num == 0 || s == AI_COLOR && arg_now > arg_m || s == COLOR_rev(AI_COLOR) && arg_now < arg_m)
-/*#ifdef AI_COLOR_BLACK
-			if (num == 0 || s == BLACK &&arg_now > arg_m || s == WHITE&&arg_now < arg_m)
-#endif
-#ifdef AI_COLOR_WHITE
-			if (num == 0 || s == BLACK &&arg_now < arg_m || s == WHITE&&arg_now > arg_m)
-#endif*/
             {
                 arg_m = arg_now;
                 if (f==1)
@@ -451,24 +377,14 @@ int runAI()
     boyi_max_x = -1;
     boyi_max_y = -1;
     boyi_search(chess_num[0], chess_num[1], chessboard, AI_COLOR, 1, -2000000, 2000000);
-/*#ifdef AI_COLOR_BLACK
-	boyi_search(chess_num[0], chess_num[1], chessboard, BLACK, 1, -2000000, 2000000);
-#endif
-#ifdef AI_COLOR_WHITE
-	boyi_search(chess_num[0], chess_num[1], chessboard, WHITE, 1, -2000000, 2000000);
-#endif*/
+
     if (boyi_max_x == -1)
     {
         return 0;//AI can't move
     }
     printf("%c%c\n", boyi_max_x + '1', boyi_max_y + 'a');
     putchess(boyi_max_x, boyi_max_y, AI_COLOR);
-/*#ifdef AI_COLOR_BLACK
-	putchess(boyi_max_x, boyi_max_y, BLACK);
-#endif
-#ifdef AI_COLOR_WHITE
-	putchess(boyi_max_x, boyi_max_y, WHITE);
-#endif*/
+
     refresh();
     return 1;
 }
@@ -539,34 +455,6 @@ int gameover()
             printf("Duals!\n");
         }
     }
-/*#ifdef AI_COLOR_BLACK
-	printf("You have %d chess.\n", white_score);
-	printf("I have %d chess.\n", black_score);
-	if (white_score>black_score)
-	{
-		printf("You win! Thanks to teach me a lot.\n");
-}
-	else if (white_score<black_score)
-	{
-		printf("You lose! Don\'t give up!\n");
-	}
-#endif
-#ifdef AI_COLOR_WHITE
-	printf("You have %d chess.\n", black_score);
-	printf("I have %d chess.\n", white_score);
-	if (white_score<black_score)
-	{
-		printf("You win! Thanks to teach me a lot.\n");
-	}
-	else if (white_score>black_score)
-	{
-		printf("You lose! Don\'t give up!\n");
-	}
-#endif
-	else
-	{
-		printf("Duals!\n");
-	}*/
     return 1;
 }
 
@@ -574,12 +462,6 @@ main()
 {
     char c;
     printf("\nREVERSI\n");
-/*#ifdef AI_COLOR_BLACK
-	printf("You can go first on the first game, then we will take turns.\n");
-#endif
-#ifdef AI_COLOR_WHITE
-	printf("I will go first on the first game, then we will take turns.\n");
-#endif*/
     while (1)
     {
         printf("You can enter 0 to go first, 1 for AI to go first\n");
@@ -655,21 +537,11 @@ main()
                 ai_move = runAI();
             }
 
-/*#ifdef AI_COLOR_WHITE
-			ai_move = runAI();
-#endif*/
-
             for (i = 0;i < SIZE;i++)
             {
                 for (j = 0;j < SIZE;j++)
                 {
                     if (chessboard[i][j] == COLOR_(COLOR_rev(AI_COLOR)) || chessboard[i][j] == BOTH)
-/*#ifdef AI_COLOR_BLACK
-					if (chessboard[i][j] == WHITE_ || chessboard[i][j] == BOTH)
-#endif
-#ifdef AI_COLOR_WHITE
-					if (chessboard[i][j] == BLACK_ || chessboard[i][j] == BOTH)
-#endif*/
                     {
                         player_move = 1;
                         break;
@@ -698,12 +570,6 @@ main()
                 }
 
                 if (chessboard[x][y] != COLOR_(COLOR_rev(AI_COLOR)) && chessboard[x][y] != BOTH)
-/*#ifdef AI_COLOR_BLACK
-				if (chessboard[x][y] != WHITE_&&chessboard[x][y] != BOTH)
-#endif
-#ifdef AI_COLOR_WHITE
-				if (chessboard[x][y] != BLACK_&&chessboard[x][y] != BOTH)
-#endif*/
                 {
                     printf("Not a valid move, try again.\n");
                     continue;
@@ -711,12 +577,6 @@ main()
 
                 putchess(x, y, COLOR_rev(AI_COLOR));
 
-/*#ifdef AI_COLOR_BLACK
-				putchess(x, y, WHITE);
-#endif
-#ifdef AI_COLOR_WHITE
-				putchess(x, y, BLACK);
-#endif*/
                 refresh();
                 break;
             }
@@ -725,9 +585,6 @@ main()
             {
                 ai_move = runAI();
             }
-/*#ifdef AI_COLOR_BLACK
-			ai_move = runAI();
-#endif*/
 
             if (gameover()==1)
             {
