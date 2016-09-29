@@ -26,6 +26,12 @@ others is considered plagiarism.
 
 - Due is coming
 
+## Compilation of C/C++
+
+The project is built by CMake 3.5.
+
+If you don't know how to use CMake, copy the files to your own directory and build it in your own project.
+
 ## Contribution
 
 If you want to add your code, feel free to just open pull request.
