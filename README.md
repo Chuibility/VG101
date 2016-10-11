@@ -15,6 +15,8 @@ others is considered plagiarism.
 ## Lab - Matlab
 
 - num2words
+- [bin2dec&dev2bin](lab/matlab/bin2dec&dec2bin)
+- [PasTri](lab/matlab/PasTri)
 
 ## Lab - C
 
