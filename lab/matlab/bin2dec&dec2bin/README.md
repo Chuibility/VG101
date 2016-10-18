@@ -1,4 +1,9 @@
-# bin2dec
+# bin2dec & dec2bin
+
+## Introduction
+
+### bin2dec
+
 Write your own program to convert a binary number to decimal number.
 
 You cannot use any MATLAB number conversion function.
@@ -9,10 +14,13 @@ Start your program like this:
 
 a_bin is a binary number and n is the number of digits.
 
-# dec2bin
+### dec2bin
 
 The reverse of the above.
 
 Start your program like this:
 
 `function a_bin=Mydec2bin(a_dec)`
+
+## Work cited
+Question 3, Lab1, VG101, Jigang Wu, FA2015 & FA2016

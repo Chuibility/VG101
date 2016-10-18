@@ -1,6 +1,6 @@
 # VG101
 
-This is a combinition of Vg101 labs. The aim is to record valuable lab resources since they are changing every year.
+This is a combinition of VG101 labs. The aim is to record valuable lab resources since they are changing every year.
 
 ## About Honor Code
 
@@ -12,17 +12,21 @@ labor and thoughts. This applies, in particular, to ideas, expressions or work o
 as from books, the internet, and other sources. The failure to properly credit ideas, expressions or work from
 others is considered plagiarism.
 
-## Lab - Matlab
+## Lab
 
-- num2words
+### Lab - Matlab
 
-## Lab - C
+- [bin2dec&dec2bin](lab/matlab/bin2dec&dec2bin)
+- [Newton](lab/matlab/Newton)
+- [PasTri](lab/matlab/PasTri)
+
+### Lab - C
 
 - [Reversi](lab/c/reversi)
 - [Cube](lab/c/cube)
 - BLADE
 
-## Lab - Cpp
+### Lab - Cpp
 
 - Due is coming
 

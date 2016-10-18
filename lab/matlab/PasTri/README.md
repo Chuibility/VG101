@@ -1,4 +1,7 @@
 # PasTri
+
+## Introduction
+
 Pascal’s triangle is a triangular array composed of the binomial coefficients. 
 
 Write a function to generate a Pascal’s triangle.
@@ -22,3 +25,7 @@ The output should be like this in a .txt file:
      1     3     3     1   
   1     4     6     4     1   
 ```
+
+## Work cited
+Question 3, Lab2, VG101, Jigang Wu, FA2015 & FA2016
+Ex.2, Lab2, VG101, Manual, FA2016
